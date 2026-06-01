@@ -1,0 +1,124 @@
+/* ============================================
+   ADVOCACY & BLOGS PAGE
+   ============================================ */
+
+/* Filters */
+.blog-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-2xl);
+  justify-content: center;
+}
+
+.blog-filter-btn {
+  padding: 0.5rem 1.25rem;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: var(--grey-50);
+  border: 1px solid var(--grey-200);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+}
+
+.blog-filter-btn:hover {
+  background: var(--green-subtle);
+  color: var(--green-primary);
+  border-color: var(--green-lighter);
+}
+
+.blog-filter-btn--active {
+  background: var(--green-primary);
+  color: var(--white);
+  border-color: var(--green-primary);
+}
+
+.blog-filter-btn--active:hover {
+  background: var(--green-light);
+  color: var(--white);
+}
+
+/* Blog Grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-xl);
+}
+
+.blog-card {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.blog-card__img {
+  overflow: hidden;
+}
+
+.blog-card__body {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  flex: 1;
+}
+
+.blog-card__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.3;
+}
+
+.blog-card__excerpt {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+  flex: 1;
+}
+
+.blog-card__link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--green-primary);
+  cursor: pointer;
+  transition: gap var(--duration-fast) var(--ease-out);
+  margin-top: var(--space-sm);
+}
+
+.blog-card__link:hover {
+  gap: var(--space-sm);
+}
+
+/* Empty State */
+.blog-empty {
+  text-align: center;
+  padding: var(--space-4xl) 0;
+  color: var(--text-muted);
+  font-size: var(--text-lg);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-filters {
+    justify-content: flex-start;
+  }
+}

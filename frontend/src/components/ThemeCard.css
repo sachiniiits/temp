@@ -1,0 +1,92 @@
+.theme-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-xl);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--duration-normal) var(--ease-out);
+  border: 1px solid var(--grey-100);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  transition: height var(--duration-normal) var(--ease-out);
+}
+
+.theme-card--green::before {
+  background: linear-gradient(90deg, var(--green-primary), var(--green-lighter));
+}
+
+.theme-card--blue::before {
+  background: linear-gradient(90deg, var(--blue-primary), var(--blue-light));
+}
+
+.theme-card--brown::before {
+  background: linear-gradient(90deg, var(--brown-primary), var(--brown-light));
+}
+
+.theme-card--yellow::before {
+  background: linear-gradient(90deg, var(--yellow-primary), var(--yellow-light));
+}
+
+.theme-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+}
+
+.theme-card:hover::before {
+  height: 6px;
+}
+
+.theme-card__icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+  font-size: 2rem;
+  transition: transform var(--duration-normal) var(--ease-spring);
+}
+
+.theme-card--green .theme-card__icon-wrap {
+  background: var(--green-subtle);
+}
+
+.theme-card--blue .theme-card__icon-wrap {
+  background: var(--blue-subtle);
+}
+
+.theme-card--brown .theme-card__icon-wrap {
+  background: var(--brown-subtle);
+}
+
+.theme-card--yellow .theme-card__icon-wrap {
+  background: var(--yellow-subtle);
+}
+
+.theme-card:hover .theme-card__icon-wrap {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.theme-card__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.theme-card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+}

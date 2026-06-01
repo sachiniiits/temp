@@ -1,0 +1,171 @@
+/* ============================================
+   WHO WE ARE PAGE
+   ============================================ */
+
+/* ----- Page Hero (reusable) ----- */
+.page-hero {
+  position: relative;
+  padding: calc(var(--nav-height) + var(--space-4xl)) 0 var(--space-4xl);
+  text-align: center;
+  overflow: hidden;
+}
+
+.page-hero__bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #E8F5E9 0%, #E1F5FE 50%, #FFF9C4 100%);
+  background-size: 200% 200%;
+  animation: gradientMove 10s ease infinite;
+}
+
+.page-hero__bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: radial-gradient(circle at 1px 1px, var(--green-primary) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.page-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero__title {
+  font-size: var(--text-5xl);
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.page-hero__subtitle {
+  font-size: var(--text-xl);
+  color: var(--text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* ----- Intro Grid ----- */
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4xl);
+  align-items: center;
+}
+
+.intro-text {
+  font-size: var(--text-lg);
+  line-height: 1.8;
+  margin-bottom: var(--space-lg);
+  color: var(--text-secondary);
+}
+
+/* ----- Philosophy ----- */
+.philosophy__inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: var(--space-3xl);
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.philosophy__quote-mark {
+  font-family: var(--font-heading);
+  font-size: 6rem;
+  font-weight: 800;
+  color: var(--green-subtle);
+  line-height: 0.5;
+  margin-bottom: var(--space-md);
+  user-select: none;
+}
+
+.philosophy__quote {
+  font-family: var(--font-heading);
+  font-size: var(--text-2xl);
+  font-weight: 600;
+  color: var(--green-primary);
+  line-height: 1.4;
+  font-style: normal;
+  margin-bottom: var(--space-lg);
+}
+
+.philosophy__label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--text-muted);
+  margin-top: var(--space-md);
+}
+
+/* ----- Values Grid ----- */
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.value-card {
+  text-align: center;
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  background: var(--white);
+  border: 1px solid var(--grey-100);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.value-card:hover {
+  border-color: var(--green-subtle);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.value-card__icon {
+  font-size: 2.5rem;
+  margin-bottom: var(--space-md);
+  display: block;
+}
+
+.value-card__title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+  color: var(--green-primary);
+}
+
+.value-card__desc {
+  font-size: var(--text-sm);
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* ----- Visual Banner ----- */
+.visual-banner {
+  padding: var(--space-3xl) 0;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 1024px) {
+  .intro-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-2xl);
+  }
+
+  .values-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .philosophy__quote {
+    font-size: var(--text-xl);
+  }
+}

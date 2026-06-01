@@ -1,0 +1,104 @@
+/* ============================================
+   CORE TEAM PAGE
+   ============================================ */
+
+.founders-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2xl);
+}
+
+.founder-card {
+  background: var(--white);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  transition: all var(--duration-normal) var(--ease-out);
+  border: 1px solid var(--grey-100);
+}
+
+.founder-card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+}
+
+.founder-card__photo {
+  overflow: hidden;
+}
+
+.founder-card__info {
+  padding: var(--space-xl);
+}
+
+.founder-card__name {
+  font-size: var(--text-2xl);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.founder-card__role {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--green-primary);
+  margin-bottom: var(--space-sm);
+}
+
+.founder-card__bio {
+  font-size: var(--text-base);
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+/* Advisory Board */
+.advisory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-lg);
+}
+
+.advisory-card {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-xl);
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  border: 2px dashed var(--grey-200);
+  transition: all var(--duration-normal) var(--ease-out);
+}
+
+.advisory-card:hover {
+  border-color: var(--green-lighter);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.advisory-card__icon {
+  font-size: 2.5rem;
+  display: block;
+  margin-bottom: var(--space-md);
+}
+
+.advisory-card__title {
+  font-size: var(--text-base);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .founders-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .advisory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .advisory-grid {
+    grid-template-columns: 1fr;
+  }
+}

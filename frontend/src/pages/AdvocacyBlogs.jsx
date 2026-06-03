@@ -57,11 +57,16 @@ export default function AdvocacyBlogs() {
   return (
     <main className="blogs-page" id="advocacy-blogs-page">
       {/* Page Hero */}
-      <section className="page-hero">
-        <div className="page-hero__bg"></div>
+      <section className="page-hero page-hero--video">
+        <div className="page-hero__video-wrap">
+          <video className="page-hero__video" autoPlay loop muted playsInline>
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+          <div className="page-hero__video-overlay" />
+        </div>
         <div className="container">
           <div className="page-hero__content">
-            <span className="hero__badge animate-fade-in">Insights & Perspectives</span>
+            <span className="hero__badge hero__badge--light animate-fade-in">Insights & Perspectives</span>
             <h1 className="page-hero__title animate-fade-in-up">Advocacy & Blogs</h1>
             <p className="page-hero__subtitle animate-fade-in-up delay-1">
               Thought leadership on sustainable development, community resilience, and social innovation.

@@ -7,19 +7,19 @@ import ScrollExpandMedia from '../components/ui/scroll-expansion-hero';
 import './Home.css';
 
 const impactThemes = [
-  { icon: '🌾', title: 'Sustainable Livelihoods', description: 'Empowering communities through skill development, entrepreneurship, and financial inclusion.', color: 'green' },
-  { icon: '🌍', title: 'Climate Resilience', description: 'Building adaptive capacity through WASH, conservation, and nature-based solutions.', color: 'blue' },
-  { icon: '📚', title: 'Child Rights & Education', description: 'Ensuring access to quality education, digital learning, and child-safe environments.', color: 'yellow' },
-  { icon: '🏥', title: 'Public Health & Hygiene', description: 'Strengthening community health systems through preventive care, nutrition, and wellness.', color: 'brown' },
-  { icon: '👩', title: 'Women Empowerment', description: 'Advancing gender equality through leadership, literacy, and economic participation.', color: 'green' },
-  { icon: '🔬', title: 'Research & Innovation', description: 'Driving evidence-based development through data analytics and social innovation.', color: 'blue' },
+  { title: 'Sustainable Livelihoods', description: 'Empowering communities through skill development, entrepreneurship, and financial inclusion.', color: 'green' },
+  { title: 'Climate Resilience', description: 'Building adaptive capacity through WASH, conservation, and nature-based solutions.', color: 'blue' },
+  { title: 'Child Rights & Education', description: 'Ensuring access to quality education, digital learning, and child-safe environments.', color: 'yellow' },
+  { title: 'Public Health & Hygiene', description: 'Strengthening community health systems through preventive care, nutrition, and wellness.', color: 'brown' },
+  { title: 'Women Empowerment', description: 'Advancing gender equality through leadership, literacy, and economic participation.', color: 'green' },
+  { title: 'Research & Innovation', description: 'Driving evidence-based development through data analytics and social innovation.', color: 'blue' },
 ];
 
 const csrHighlights = [
-  { icon: '🔍', title: 'Transparency & Compliance', desc: 'Rigorous governance standards and full regulatory compliance.' },
-  { icon: '📊', title: 'Data-driven Monitoring', desc: 'Real-time impact analytics and evidence-based program tracking.' },
-  { icon: '🏘️', title: 'Community Institution Building', desc: 'Strengthening grassroots structures like SHGs, FPOs, and VWSCs.' },
-  { icon: '📐', title: 'Scalable Program Design', desc: 'Replicable frameworks built for scale across diverse geographies.' },
+  { title: 'Transparency & Compliance', desc: 'Rigorous governance standards and full regulatory compliance.' },
+  { title: 'Data-driven Monitoring', desc: 'Real-time impact analytics and evidence-based program tracking.' },
+  { title: 'Community Institution Building', desc: 'Strengthening grassroots structures like SHGs, FPOs, and VWSCs.' },
+  { title: 'Scalable Program Design', desc: 'Replicable frameworks built for scale across diverse geographies.' },
 ];
 
 const blogPreviews = [
@@ -33,7 +33,7 @@ function HeroChildContent() {
     <div className="hero-child-content">
       <div className="hero-child-grid">
         <div className="hero-child-left">
-          <span className="hero__badge animate-fade-in">🌱 Section 8 Non-Profit Organization</span>
+          <span className="hero__badge animate-fade-in">Section 8 Non-Profit Organization</span>
           <h1 className="hero-child-title animate-fade-in-up">
             Building Resilient Communities Through{' '}
             <span className="hero__title-highlight">Innovation, Inclusion</span> &{' '}
@@ -83,9 +83,8 @@ export default function Home() {
       {/* ===== SCROLL EXPANSION HERO ===== */}
       <ScrollExpandMedia
         mediaType="video"
-        mediaSrc="https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1"
-        posterSrc="https://images.pexels.com/videos/5752729/space-earth-universe-cosmos-5752729.jpeg"
-        bgImageSrc="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop"
+        mediaSrc="/video3.mp4"
+        bgVideoSrc="/video.mp4"
         title="Building Resilient Communities"
         date="Janartham Foundation"
         scrollToExpand="↓ Scroll to Explore"
@@ -148,8 +147,24 @@ export default function Home() {
       </section>
 
       {/* ===== CSR PARTNERSHIP ===== */}
-      <section className="csr section section--green" id="csr-partnership">
-        <div className="container">
+      <section className="csr-section" id="csr-partnership">
+        <div className="csr-section__video-wrap">
+          <video
+            className="csr-section__video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="https://images.pexels.com/videos/3571264/free-video-3571264.jpg?auto=compress&cs=tinysrgb&w=1920"
+          >
+            <source
+              src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="csr-section__overlay" />
+        </div>
+        <div className="container csr-section__content">
           <SectionHeader
             tag="Partnerships"
             title="Trusted Implementation Partner for CSR & Development Programs"
@@ -159,7 +174,6 @@ export default function Home() {
           <div className="csr__grid">
             {csrHighlights.map((item, i) => (
               <div key={item.title} className={`csr__card animate-fade-in-up delay-${i + 1}`}>
-                <span className="csr__card-icon">{item.icon}</span>
                 <h4 className="csr__card-title">{item.title}</h4>
                 <p className="csr__card-desc">{item.desc}</p>
               </div>

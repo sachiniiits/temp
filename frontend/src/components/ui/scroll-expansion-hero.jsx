@@ -7,6 +7,7 @@ const ScrollExpandMedia = ({
   mediaSrc,
   posterSrc,
   bgImageSrc,
+  bgVideoSrc,
   title,
   date,
   scrollToExpand,
@@ -140,11 +141,22 @@ const ScrollExpandMedia = ({
             animate={{ opacity: 1 - scrollProgress }}
             transition={{ duration: 0.1 }}
           >
-            <img
-              src={bgImageSrc}
-              alt="Background"
-              className="seh-bg-image"
-            />
+            {bgVideoSrc ? (
+              <video
+                src={bgVideoSrc}
+                autoPlay
+                muted
+                loop
+                playsInline
+                className="seh-bg-image"
+              />
+            ) : (
+              <img
+                src={bgImageSrc}
+                alt="Background"
+                className="seh-bg-image"
+              />
+            )}
             <div className="seh-bg-overlay" />
           </motion.div>
 

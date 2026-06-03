@@ -3,24 +3,35 @@ import MediaPlaceholder from '../components/MediaPlaceholder';
 import './WhoWeAre.css';
 
 const coreValues = [
-  { icon: '🤝', title: 'Integrity', desc: 'Upholding the highest standards of honesty and ethical conduct in all our work.' },
-  { icon: '🌐', title: 'Inclusion', desc: 'Ensuring no one is left behind — reaching the most marginalized communities.' },
-  { icon: '🌿', title: 'Sustainability', desc: 'Building programs and solutions that endure beyond project timelines.' },
-  { icon: '💡', title: 'Innovation', desc: 'Embracing technology and creative approaches to solve complex challenges.' },
-  { icon: '⚖️', title: 'Equity', desc: 'Promoting fair access to resources, opportunities, and decision-making.' },
-  { icon: '📋', title: 'Accountability', desc: 'Being answerable to communities, partners, and stakeholders.' },
-  { icon: '🤲', title: 'Collaboration', desc: 'Working with diverse stakeholders to amplify collective impact.' },
+  { title: 'Integrity', desc: 'Upholding the highest standards of honesty and ethical conduct in all our work.' },
+  { title: 'Inclusion', desc: 'Ensuring no one is left behind — reaching the most marginalized communities.' },
+  { title: 'Sustainability', desc: 'Building programs and solutions that endure beyond project timelines.' },
+  { title: 'Innovation', desc: 'Embracing technology and creative approaches to solve complex challenges.' },
+  { title: 'Equity', desc: 'Promoting fair access to resources, opportunities, and decision-making.' },
+  { title: 'Accountability', desc: 'Being answerable to communities, partners, and stakeholders.' },
+  { title: 'Collaboration', desc: 'Working with diverse stakeholders to amplify collective impact.' },
 ];
 
 export default function WhoWeAre() {
   return (
     <main className="who-we-are" id="who-we-are-page">
       {/* Page Hero */}
-      <section className="page-hero">
-        <div className="page-hero__bg"></div>
+      <section className="page-hero page-hero--video">
+        <div className="page-hero__video-wrap">
+          <video
+            className="page-hero__video"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+          <div className="page-hero__video-overlay" />
+        </div>
         <div className="container">
           <div className="page-hero__content">
-            <span className="hero__badge animate-fade-in">About Janartham Foundation</span>
+            <span className="hero__badge hero__badge--light animate-fade-in">About Janartham Foundation</span>
             <h1 className="page-hero__title animate-fade-in-up">Who We Are</h1>
             <p className="page-hero__subtitle animate-fade-in-up delay-1">
               A Section 8 Company committed to building equitable and sustainable communities.
@@ -78,7 +89,6 @@ export default function WhoWeAre() {
           <div className="values-grid">
             {coreValues.map((val, i) => (
               <div key={val.title} className={`value-card animate-fade-in-up delay-${(i % 4) + 1}`}>
-                <div className="value-card__icon">{val.icon}</div>
                 <h3 className="value-card__title">{val.title}</h3>
                 <p className="value-card__desc">{val.desc}</p>
               </div>

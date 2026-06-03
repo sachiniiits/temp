@@ -16,21 +16,26 @@ const founders = [
 ];
 
 const advisoryBoard = [
-  { icon: '🏥', title: 'Public Health Experts' },
-  { icon: '🏢', title: 'CSR Advisors' },
-  { icon: '🌿', title: 'Environmental Specialists' },
-  { icon: '🔬', title: 'Education & STEM Experts' },
+  { title: 'Public Health Experts' },
+  { title: 'CSR Advisors' },
+  { title: 'Environmental Specialists' },
+  { title: 'Education & STEM Experts' },
 ];
 
 export default function CoreTeam() {
   return (
     <main className="core-team" id="core-team-page">
       {/* Page Hero */}
-      <section className="page-hero">
-        <div className="page-hero__bg"></div>
+      <section className="page-hero page-hero--video">
+        <div className="page-hero__video-wrap">
+          <video className="page-hero__video" autoPlay loop muted playsInline>
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+          <div className="page-hero__video-overlay" />
+        </div>
         <div className="container">
           <div className="page-hero__content">
-            <span className="hero__badge animate-fade-in">Our People</span>
+            <span className="hero__badge hero__badge--light animate-fade-in">Our People</span>
             <h1 className="page-hero__title animate-fade-in-up">Core Team</h1>
             <p className="page-hero__subtitle animate-fade-in-up delay-1">
               Led by passionate development professionals committed to systemic social change.
@@ -76,7 +81,6 @@ export default function CoreTeam() {
           <div className="advisory-grid">
             {advisoryBoard.map((item, i) => (
               <div key={item.title} className={`advisory-card animate-fade-in-up delay-${i + 1}`}>
-                <span className="advisory-card__icon">{item.icon}</span>
                 <h4 className="advisory-card__title">{item.title}</h4>
               </div>
             ))}

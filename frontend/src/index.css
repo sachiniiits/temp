@@ -45,8 +45,8 @@
   --text-on-green: #FFFFFF;
 
   /* Typography */
-  --font-heading: 'Poppins', system-ui, -apple-system, sans-serif;
-  --font-body: 'Open Sans', system-ui, -apple-system, sans-serif;
+  --font-heading: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
 
   /* Font Sizes */
   --text-xs: 0.75rem;

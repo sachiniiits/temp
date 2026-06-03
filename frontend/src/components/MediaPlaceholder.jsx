@@ -23,7 +23,7 @@ export default function MediaPlaceholder({ label, aspectRatio = '16/9', type = '
         )}
       </div>
       <span className="media-placeholder__label">{label}</span>
-      <span className="media-placeholder__type">{type === 'video' ? '📹 Video' : '📷 Image'} Placeholder</span>
+      <span className="media-placeholder__type">{type === 'video' ? 'Video' : 'Image'} Placeholder</span>
     </div>
   );
 }

@@ -1,0 +1,210 @@
+/* ============================================
+   SCROLL EXPANSION HERO — Vanilla CSS
+   Replaces Tailwind classes from the original
+   ============================================ */
+
+.seh-wrapper {
+  transition: background-color 700ms ease-in-out;
+  overflow-x: hidden;
+}
+
+.seh-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100dvh;
+}
+
+.seh-viewport {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100dvh;
+}
+
+/* Background layer */
+.seh-bg-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  height: 100%;
+}
+
+.seh-bg-image {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+}
+
+.seh-bg-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* Container */
+.seh-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 10;
+}
+
+/* Center area (full viewport height) */
+.seh-center-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100dvh;
+  position: relative;
+}
+
+/* Media box */
+.seh-media-box {
+  position: absolute;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+/* Media inner containers */
+.seh-media-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.seh-media-inner-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.seh-media-frame {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.75rem;
+}
+
+.seh-media-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.seh-media-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 0.75rem;
+}
+
+.seh-iframe-blocker {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.seh-media-dim {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.75rem;
+}
+
+/* Meta text area */
+.seh-meta-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  z-index: 10;
+  margin-top: 1rem;
+}
+
+.seh-meta-date {
+  font-size: 1.5rem;
+  color: #bfdbfe;
+}
+
+.seh-meta-scroll {
+  color: #bfdbfe;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* Title area */
+.seh-title-area {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 1rem;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+  flex-direction: column;
+  mix-blend-mode: normal;
+}
+
+.seh-title-area--blend {
+  mix-blend-mode: difference;
+}
+
+.seh-title-word {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: #bfdbfe;
+  font-family: var(--font-heading, 'Poppins', sans-serif);
+}
+
+@media (min-width: 768px) {
+  .seh-title-word {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .seh-title-word {
+    font-size: 3.75rem;
+  }
+}
+
+/* Children area (revealed after expansion) */
+.seh-children-area {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 2.5rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .seh-children-area {
+    padding: 2.5rem 4rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .seh-children-area {
+    padding: 5rem 4rem;
+  }
+}

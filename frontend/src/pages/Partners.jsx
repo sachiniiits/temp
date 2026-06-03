@@ -4,28 +4,33 @@ import MediaPlaceholder from '../components/MediaPlaceholder';
 import './Partners.css';
 
 const highlights = [
-  { icon: '🔍', title: 'Transparency & Compliance', desc: 'Rigorous governance standards and full regulatory compliance as a Section 8 Company.' },
-  { icon: '📊', title: 'Data-driven Monitoring', desc: 'Real-time impact analytics, dashboards, and evidence-based program evaluation.' },
-  { icon: '🏘️', title: 'Community Institution Building', desc: 'Strengthening SHGs, FPOs, VWSCs, and grassroots leadership for lasting impact.' },
-  { icon: '📐', title: 'Scalable Program Design', desc: 'Replicable frameworks built to scale across diverse geographies and contexts.' },
+  { title: 'Transparency & Compliance', desc: 'Rigorous governance standards and full regulatory compliance as a Section 8 Company.' },
+  { title: 'Data-driven Monitoring', desc: 'Real-time impact analytics, dashboards, and evidence-based program evaluation.' },
+  { title: 'Community Institution Building', desc: 'Strengthening SHGs, FPOs, VWSCs, and grassroots leadership for lasting impact.' },
+  { title: 'Scalable Program Design', desc: 'Replicable frameworks built to scale across diverse geographies and contexts.' },
 ];
 
 const partnerTypes = [
-  { icon: '🏢', title: 'Corporate CSR Partners', desc: 'Design and implement CSR programs that align with your strategic goals and compliance requirements.' },
-  { icon: '🏛️', title: 'Government Agencies', desc: 'Support public programs with ground-level implementation expertise and community mobilization.' },
-  { icon: '🌐', title: 'Development Agencies', desc: 'Collaborate on multi-stakeholder development programs with measurable outcomes.' },
-  { icon: '🎓', title: 'Academic Institutions', desc: 'Partner on research, STEM education programs, and evidence-based policy advocacy.' },
+  { title: 'Corporate CSR Partners', desc: 'Design and implement CSR programs that align with your strategic goals and compliance requirements.' },
+  { title: 'Government Agencies', desc: 'Support public programs with ground-level implementation expertise and community mobilization.' },
+  { title: 'Development Agencies', desc: 'Collaborate on multi-stakeholder development programs with measurable outcomes.' },
+  { title: 'Academic Institutions', desc: 'Partner on research, STEM education programs, and evidence-based policy advocacy.' },
 ];
 
 export default function Partners() {
   return (
     <main className="partners-page" id="partners-csr-page">
       {/* Page Hero */}
-      <section className="page-hero">
-        <div className="page-hero__bg"></div>
+      <section className="page-hero page-hero--video">
+        <div className="page-hero__video-wrap">
+          <video className="page-hero__video" autoPlay loop muted playsInline>
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+          <div className="page-hero__video-overlay" />
+        </div>
         <div className="container">
           <div className="page-hero__content">
-            <span className="hero__badge animate-fade-in">Collaborate With Us</span>
+            <span className="hero__badge hero__badge--light animate-fade-in">Collaborate With Us</span>
             <h1 className="page-hero__title animate-fade-in-up">Partners & CSR</h1>
             <p className="page-hero__subtitle animate-fade-in-up delay-1">
               Trusted implementation partner for CSR and development programs across India.
@@ -63,8 +68,24 @@ export default function Partners() {
       </section>
 
       {/* Highlights */}
-      <section className="section section--green" id="partnership-highlights">
-        <div className="container">
+      <section className="highlights-section" id="partnership-highlights">
+        <div className="highlights-section__video-wrap">
+          <video
+            className="highlights-section__video"
+            autoPlay
+            loop
+            muted
+            playsInline
+            poster="https://images.pexels.com/videos/3571264/free-video-3571264.jpg?auto=compress&cs=tinysrgb&w=1920"
+          >
+            <source
+              src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="highlights-section__overlay" />
+        </div>
+        <div className="container highlights-section__content">
           <SectionHeader
             tag="Why Partner With Us"
             title="Our Strengths"
@@ -74,7 +95,6 @@ export default function Partners() {
           <div className="highlights-grid">
             {highlights.map((item, i) => (
               <div key={item.title} className={`highlight-card animate-fade-in-up delay-${i + 1}`}>
-                <span className="highlight-card__icon">{item.icon}</span>
                 <h4 className="highlight-card__title">{item.title}</h4>
                 <p className="highlight-card__desc">{item.desc}</p>
               </div>
@@ -94,7 +114,6 @@ export default function Partners() {
           <div className="partner-types-grid">
             {partnerTypes.map((pt, i) => (
               <div key={pt.title} className={`partner-type-card animate-fade-in-up delay-${i + 1}`}>
-                <span className="partner-type-card__icon">{pt.icon}</span>
                 <h3 className="partner-type-card__title">{pt.title}</h3>
                 <p className="partner-type-card__desc">{pt.desc}</p>
               </div>

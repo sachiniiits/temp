@@ -45,7 +45,7 @@ export default function Navbar() {
             <div className="navbar__logo-icon">
               <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
                 <circle cx="32" cy="32" r="30" fill="url(#navLogoGrad)" />
-                <text x="32" y="44" fontFamily="Poppins, sans-serif" fontWeight="700" fontSize="32" fill="white" textAnchor="middle">J</text>
+                <text x="32" y="44" fontFamily="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" fontWeight="700" fontSize="32" fill="white" textAnchor="middle">J</text>
                 <defs>
                   <linearGradient id="navLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style={{ stopColor: '#2E7D32' }} />
@@ -104,7 +104,7 @@ export default function Navbar() {
             <div className="navbar__logo-icon">
               <svg width="36" height="36" viewBox="0 0 64 64" fill="none">
                 <circle cx="32" cy="32" r="30" fill="url(#drawerLogoGrad)" />
-                <text x="32" y="44" fontFamily="Poppins, sans-serif" fontWeight="700" fontSize="32" fill="white" textAnchor="middle">J</text>
+                <text x="32" y="44" fontFamily="-apple-system, BlinkMacSystemFont, 'SF Pro Display', sans-serif" fontWeight="700" fontSize="32" fill="white" textAnchor="middle">J</text>
                 <defs>
                   <linearGradient id="drawerLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" style={{ stopColor: '#2E7D32' }} />

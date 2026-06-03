@@ -27,11 +27,16 @@ export default function Contact() {
   return (
     <main className="contact-page" id="contact-page">
       {/* Page Hero */}
-      <section className="page-hero">
-        <div className="page-hero__bg"></div>
+      <section className="page-hero page-hero--video">
+        <div className="page-hero__video-wrap">
+          <video className="page-hero__video" autoPlay loop muted playsInline>
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+          <div className="page-hero__video-overlay" />
+        </div>
         <div className="container">
           <div className="page-hero__content">
-            <span className="hero__badge animate-fade-in">Reach Out</span>
+            <span className="hero__badge hero__badge--light animate-fade-in">Reach Out</span>
             <h1 className="page-hero__title animate-fade-in-up">Contact Us</h1>
             <p className="page-hero__subtitle animate-fade-in-up delay-1">
               We'd love to hear from you. Let's build impact together.
@@ -57,7 +62,7 @@ export default function Contact() {
 
               <div className="contact-details">
                 <div className="contact-detail">
-                  <div className="contact-detail__icon">📍</div>
+                  <div className="contact-detail__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
                   <div>
                     <h4 className="contact-detail__label">Address</h4>
                     <p className="contact-detail__value">
@@ -68,7 +73,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail">
-                  <div className="contact-detail__icon">✉️</div>
+                  <div className="contact-detail__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
                   <div>
                     <h4 className="contact-detail__label">Email</h4>
                     <p className="contact-detail__value">
@@ -78,7 +83,7 @@ export default function Contact() {
                 </div>
 
                 <div className="contact-detail">
-                  <div className="contact-detail__icon">📞</div>
+                  <div className="contact-detail__icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg></div>
                   <div>
                     <h4 className="contact-detail__label">Phone</h4>
                     <p className="contact-detail__value">
@@ -115,7 +120,7 @@ export default function Contact() {
 
                 {submitted && (
                   <div className="contact-form__success animate-scale-in">
-                    ✅ Thank you! Your message has been received. We'll get back to you soon.
+                    Thank you! Your message has been received. We'll get back to you soon.
                   </div>
                 )}
 
@@ -204,7 +209,7 @@ export default function Contact() {
         <div className="container">
           <div className="map-placeholder">
             <div className="map-placeholder__inner">
-              <span className="map-placeholder__icon">🗺️</span>
+              <span className="map-placeholder__icon"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></span>
               <h4 className="map-placeholder__title">Google Maps Integration</h4>
               <p className="map-placeholder__text">
                 Embed your Google Maps location here.<br />

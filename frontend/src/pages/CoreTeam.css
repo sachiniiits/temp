@@ -66,18 +66,15 @@
   border-radius: var(--radius-xl);
   border: 2px dashed var(--grey-200);
   transition: all var(--duration-normal) var(--ease-out);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .advisory-card:hover {
   border-color: var(--green-lighter);
   box-shadow: var(--shadow-md);
   transform: translateY(-2px);
-}
-
-.advisory-card__icon {
-  font-size: 2.5rem;
-  display: block;
-  margin-bottom: var(--space-md);
 }
 
 .advisory-card__title {

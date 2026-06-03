@@ -34,12 +34,6 @@
   flex-shrink: 0;
 }
 
-.thematic-area__icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: var(--space-sm);
-}
-
 .thematic-area__title {
   font-size: var(--text-3xl);
   font-weight: 700;

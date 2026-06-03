@@ -7,7 +7,6 @@ const areas = [
     id: 'sustainable-livelihoods',
     letter: 'A',
     title: 'Sustainable Livelihoods & Economic Development',
-    icon: '🌾',
     color: 'green',
     description: 'Empowering communities through skill development, entrepreneurship, and financial inclusion to build self-sustaining economic ecosystems.',
     focusAreas: ['Skill Development', 'Entrepreneurship', 'Women-led Enterprises', 'Financial Literacy', 'SHGs & FPOs', 'Rural Enterprise Promotion'],
@@ -21,7 +20,6 @@ const areas = [
     id: 'climate-resilience',
     letter: 'B',
     title: 'Climate Resilience & Environmental Sustainability',
-    icon: '🌍',
     color: 'blue',
     description: 'Building adaptive capacity through water conservation, waste management, and nature-based climate solutions.',
     focusAreas: ['WASH Programs', 'Groundwater Recharge', 'Waste Management', 'Urban Micro Forests', 'Renewable Practices', 'Biodiversity Conservation'],
@@ -35,7 +33,6 @@ const areas = [
     id: 'child-rights',
     letter: 'C',
     title: 'Child Rights, Education & Digital Inclusion',
-    icon: '📚',
     color: 'yellow',
     description: 'Ensuring access to quality education, digital learning, and child-safe environments for every child.',
     focusAreas: ['Foundational Literacy', 'STEM Education', 'Smart Classrooms', 'Digital Inclusion', 'Child Protection', 'Child-Friendly Environments'],
@@ -49,7 +46,6 @@ const areas = [
     id: 'public-health',
     letter: 'D',
     title: 'Public Health, Hygiene & Wellness',
-    icon: '🏥',
     color: 'brown',
     description: 'Strengthening community health systems through preventive care, nutrition, and wellness programs.',
     focusAreas: ['Preventive Healthcare', 'Nutrition', 'Menstrual Hygiene', 'Telemedicine Facilitation', 'Mental Well-being', 'Community Health Systems'],
@@ -63,7 +59,6 @@ const areas = [
     id: 'gender-equality',
     letter: 'E',
     title: 'Gender Equality & Women Empowerment',
-    icon: '👩',
     color: 'green',
     description: 'Advancing gender justice through leadership development, digital literacy, and economic participation.',
     focusAreas: ['Leadership Development', 'Digital Literacy', 'Financial Inclusion', 'Gender Justice', 'Safety & Well-being', 'Institutional Strengthening'],
@@ -86,11 +81,16 @@ export default function ThematicAreas() {
   return (
     <main className="thematic" id="thematic-areas-page">
       {/* Page Hero */}
-      <section className="page-hero">
-        <div className="page-hero__bg"></div>
+      <section className="page-hero page-hero--video">
+        <div className="page-hero__video-wrap">
+          <video className="page-hero__video" autoPlay loop muted playsInline>
+            <source src="/video.mp4" type="video/mp4" />
+          </video>
+          <div className="page-hero__video-overlay" />
+        </div>
         <div className="container">
           <div className="page-hero__content">
-            <span className="hero__badge animate-fade-in">Our Focus</span>
+            <span className="hero__badge hero__badge--light animate-fade-in">Our Focus</span>
             <h1 className="page-hero__title animate-fade-in-up">Thematic Areas</h1>
             <p className="page-hero__subtitle animate-fade-in-up delay-1">
               Driving transformative change across five critical domains of social development.
@@ -113,7 +113,6 @@ export default function ThematicAreas() {
                 <div className="thematic-area__header">
                   <span className="thematic-area__letter" style={{ color: colorMap[area.color] }}>{area.letter}</span>
                   <div>
-                    <span className="thematic-area__icon">{area.icon}</span>
                     <h2 className="thematic-area__title">{area.title}</h2>
                   </div>
                 </div>

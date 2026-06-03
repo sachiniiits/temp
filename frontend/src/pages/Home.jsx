@@ -1,7 +1,9 @@
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import SectionHeader from '../components/SectionHeader';
 import ThemeCard from '../components/ThemeCard';
 import MediaPlaceholder from '../components/MediaPlaceholder';
+import ScrollExpandMedia from '../components/ui/scroll-expansion-hero';
 import './Home.css';
 
 const impactThemes = [
@@ -26,59 +28,71 @@ const blogPreviews = [
   { title: 'Women-led Enterprises as Catalysts of Rural Transformation', category: 'Gender & Inclusion', tag: 'brown' },
 ];
 
+function HeroChildContent() {
+  return (
+    <div className="hero-child-content">
+      <div className="hero-child-grid">
+        <div className="hero-child-left">
+          <span className="hero__badge animate-fade-in">🌱 Section 8 Non-Profit Organization</span>
+          <h1 className="hero-child-title animate-fade-in-up">
+            Building Resilient Communities Through{' '}
+            <span className="hero__title-highlight">Innovation, Inclusion</span> &{' '}
+            <span className="hero__title-highlight">Sustainability</span>
+          </h1>
+          <p className="hero-child-subtitle animate-fade-in-up delay-1">
+            Janartham Foundation is a Section 8 not-for-profit organization committed to advancing sustainable livelihoods, climate resilience, child rights, public health, and technology-enabled social development.
+          </p>
+          <div className="hero__actions animate-fade-in-up delay-2">
+            <Link to="/thematic-areas" className="btn btn--primary btn--lg">
+              Explore Our Work
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </Link>
+            <Link to="/partners-csr" className="btn btn--white btn--lg">
+              Partner With Us
+            </Link>
+          </div>
+        </div>
+        <div className="hero-child-right">
+          <div className="hero-child-stats">
+            <div className="hero-child-stat-card">
+              <span className="hero-child-stat-num">6+</span>
+              <span className="hero-child-stat-label">Focus Areas</span>
+            </div>
+            <div className="hero-child-stat-card">
+              <span className="hero-child-stat-num">SDG</span>
+              <span className="hero-child-stat-label">Aligned</span>
+            </div>
+            <div className="hero-child-stat-card">
+              <span className="hero-child-stat-num">17</span>
+              <span className="hero-child-stat-label">SDG Goals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <main className="home" id="home-page">
-      {/* ===== HERO ===== */}
-      <section className="hero" id="hero-banner">
-        <div className="hero__bg">
-          <div className="hero__gradient"></div>
-          <div className="hero__pattern"></div>
-        </div>
-        <div className="hero__content container">
-          <div className="hero__text">
-            <span className="hero__badge animate-fade-in">🌱 Section 8 Non-Profit Organization</span>
-            <h1 className="hero__title animate-fade-in-up">
-              Building Resilient Communities Through{' '}
-              <span className="hero__title-highlight">Innovation, Inclusion</span> &{' '}
-              <span className="hero__title-highlight">Sustainability</span>
-            </h1>
-            <p className="hero__subtitle animate-fade-in-up delay-1">
-              Janartham Foundation is a Section 8 not-for-profit organization committed to advancing sustainable livelihoods, climate resilience, child rights, public health, and technology-enabled social development.
-            </p>
-            <div className="hero__actions animate-fade-in-up delay-2">
-              <Link to="/thematic-areas" className="btn btn--primary btn--lg">
-                Explore Our Work
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </Link>
-              <Link to="/partners-csr" className="btn btn--white btn--lg">
-                Partner With Us
-              </Link>
-            </div>
-          </div>
-          <div className="hero__media animate-fade-in-up delay-3">
-            <div className="hero__media-grid">
-              <MediaPlaceholder label="Rural women entrepreneurs using digital tools" aspectRatio="4/3" />
-              <MediaPlaceholder label="Children in smart classrooms" aspectRatio="4/3" />
-              <MediaPlaceholder label="Water conservation landscapes" aspectRatio="4/3" />
-              <MediaPlaceholder label="Community health workers" aspectRatio="4/3" />
-            </div>
-          </div>
-        </div>
-        {/* Decorative SDG dots */}
-        <div className="hero__sdg-strip">
-          <div className="container">
-            <div className="hero__sdg-inner">
-              <span>Aligned with UN Sustainable Development Goals</span>
-              <div className="hero__sdg-dots">
-                {[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17].map(n => (
-                  <div key={n} className="hero__sdg-dot" title={`SDG ${n}`} style={{ '--sdg-hue': `${n * 21}` }}></div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ===== SCROLL EXPANSION HERO ===== */}
+      <ScrollExpandMedia
+        mediaType="video"
+        mediaSrc="https://me7aitdbxq.ufs.sh/f/2wsMIGDMQRdYuZ5R8ahEEZ4aQK56LizRdfBSqeDMsmUIrJN1"
+        posterSrc="https://images.pexels.com/videos/5752729/space-earth-universe-cosmos-5752729.jpeg"
+        bgImageSrc="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=1920&auto=format&fit=crop"
+        title="Building Resilient Communities"
+        date="Janartham Foundation"
+        scrollToExpand="↓ Scroll to Explore"
+        textBlend
+      >
+        <HeroChildContent />
+      </ScrollExpandMedia>
 
       {/* ===== ABOUT SNAPSHOT ===== */}
       <section className="about-snap section" id="about-snapshot">

@@ -1,7 +1,7 @@
 /* =========================================================================
    Sachin Kumar — portfolio  ·  scroll engine
-   One rAF loop drives: travelling dots, phase-2 cross-fades, and the
-   phase-3 frame-sequence scrub (canvas) with its blur reveal.
+   One rAF loop drives phase-2 cross-fades and the phase-3 frame-sequence
+   scrub (canvas) with its blur reveal.
 
    Phase 3 uses a decoded image sequence rather than a scrubbed <video>:
    programmatic video seeking is unreliable across servers (needs HTTP
@@ -22,7 +22,6 @@
   };
 
   // ---- elements ----
-  var dotsTrack   = document.getElementById("dotsTrack");
   var phase2      = document.getElementById("phase2");
   var panelExp    = document.getElementById("panelExp");
   var panelProj   = document.getElementById("panelProj");
@@ -36,29 +35,13 @@
   var footerVideo = document.getElementById("footerVideo");
 
   // ---------------------------------------------------------------------
-  // Travelling dots
-  // ---------------------------------------------------------------------
-  (function buildDots() {
-    if (!dotsTrack) return;
-    var frag = document.createDocumentFragment();
-    for (var i = 0; i < 80; i++) {
-      var d = document.createElement("span");
-      d.className = "dot";
-      frag.appendChild(d);
-    }
-    dotsTrack.appendChild(frag);
-  })();
-
-  // ---------------------------------------------------------------------
   // Geometry cache (recomputed on resize / orientation change)
   // ---------------------------------------------------------------------
-  var M = { docScroll: 1, dotsAmp: 0, p2Top: 0, p2Range: 1, p3Top: 0, p3Range: 1 };
+  var M = { p2Top: 0, p2Range: 1, p3Top: 0, p3Range: 1 };
 
   function measure() {
     var winH = window.innerHeight;
     var scrollY = window.scrollY || window.pageYOffset || 0;
-    M.docScroll = Math.max(1, document.documentElement.scrollHeight - winH);
-    M.dotsAmp = window.innerWidth * 0.34;
 
     if (phase2) {
       var pin2 = phase2.querySelector(".phase2__pin");
@@ -180,19 +163,10 @@
   // ---------------------------------------------------------------------
   // Render loop
   // ---------------------------------------------------------------------
-  var lastScrollY = -1, curVeil = -1, curContent = -1;
+  var curVeil = -1, curContent = -1;
 
   function frame() {
     var scrollY = window.scrollY || window.pageYOffset || 0;
-    var moved = scrollY !== lastScrollY;
-    lastScrollY = scrollY;
-
-    // dots
-    if (dotsTrack && (moved || curVeil < 0)) {
-      var tp = clamp(scrollY / M.docScroll, 0, 1);
-      var shift = -tp * M.dotsAmp;
-      dotsTrack.style.transform = "translate3d(calc(-50% + " + shift.toFixed(1) + "px), 0, 0)";
-    }
 
     // phase 2 cross-fades
     if (panelExp && panelProj) {
@@ -203,38 +177,41 @@
       var projO = smooth(p2, 0.40, 0.56);
       panelExp.style.opacity = expO.toFixed(3);
       panelExp.style.transform = "translateY(" + ((1 - expO) * 16).toFixed(1) + "px)";
+      panelExp.style.pointerEvents = expO > 0.6 ? "auto" : "none";
       panelProj.style.opacity = projO.toFixed(3);
       panelProj.style.transform = "translateY(" + ((1 - projO) * 16).toFixed(1) + "px)";
       panelProj.style.pointerEvents = projO > 0.6 ? "auto" : "none";
     }
 
-    // phase 3 scrub + reveal
+    // phase 3 scrub -> liquid-glass reveal -> dwell (hold) -> exit
     if (scrubCanvas && p3Active) {
       var p3 = clamp((scrollY - M.p3Top) / M.p3Range, 0, 1);
 
-      // frame index across the first 80% of the section
-      var scrubP = clamp(p3 / 0.80, 0, 1);
+      // frames scrub across the first ~56% of the section
+      var scrubP = clamp(p3 / 0.56, 0, 1);
       targetFrame = scrubP * (FRAME_COUNT - 1);
       easedFrame += (targetFrame - easedFrame) * 0.4;
       if (Math.abs(targetFrame - easedFrame) < 0.5) easedFrame = targetFrame;
       var fi = clamp(Math.round(easedFrame), 0, FRAME_COUNT - 1);
       if (fi !== drawnFrame) drawFrame(fi);
 
-      // blur / darken veil grows in as the clip ends
-      var veil = smooth(p3, 0.66, 0.90);
+      // the video recedes into a soft frost as the clip resolves
+      var veil = smooth(p3, 0.46, 0.62);
       if (Math.abs(veil - curVeil) > 0.004) {
         curVeil = veil;
-        scrubCanvas.style.filter = "blur(" + (veil * 15).toFixed(2) + "px) brightness(" + (1 - veil * 0.45).toFixed(3) + ")";
-        p3Veil.style.background = "rgba(10,9,8," + (veil * 0.55).toFixed(3) + ")";
+        scrubCanvas.style.filter = "blur(" + (veil * 8).toFixed(2) + "px) brightness(" + (1 - veil * 0.30).toFixed(3) + ")";
+        p3Veil.style.background = "rgba(10,9,8," + (veil * 0.42).toFixed(3) + ")";
         p3Veil.style.opacity = "1";
       }
 
-      // skills content lifts / fades in
-      var content = smooth(p3, 0.80, 0.985);
+      // skills glass lifts + fades in, reaches full at 0.70 and then HOLDS
+      // in place until 1.0 (the pin is still stuck, so it dwells on screen)
+      var content = smooth(p3, 0.56, 0.70);
       if (Math.abs(content - curContent) > 0.004) {
         curContent = content;
         p3Content.style.opacity = content.toFixed(3);
-        p3Content.style.transform = "translateY(" + ((1 - content) * 26).toFixed(1) + "px)";
+        p3Content.style.transform =
+          "translateY(" + ((1 - content) * 30).toFixed(1) + "px) scale(" + (0.975 + content * 0.025).toFixed(4) + ")";
       }
     }
 
@@ -247,7 +224,7 @@
   function boot() {
     measure();
     sizeCanvas();
-    lastScrollY = -1; curVeil = -1; curContent = -1;
+    curVeil = -1; curContent = -1;
     requestAnimationFrame(frame);
   }
 
@@ -255,12 +232,12 @@
     var t;
     return function () {
       clearTimeout(t);
-      t = setTimeout(function () { measure(); sizeCanvas(); lastScrollY = -1; curVeil = -1; curContent = -1; }, 120);
+      t = setTimeout(function () { measure(); sizeCanvas(); curVeil = -1; curContent = -1; }, 120);
     };
   })();
 
   window.addEventListener("resize", reMeasure, { passive: true });
-  window.addEventListener("orientationchange", function () { setTimeout(function () { measure(); sizeCanvas(); lastScrollY = -1; }, 250); });
+  window.addEventListener("orientationchange", function () { setTimeout(function () { measure(); sizeCanvas(); curVeil = -1; }, 250); });
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(reMeasure);
   window.addEventListener("load", reMeasure);
 

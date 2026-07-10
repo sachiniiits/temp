@@ -10,12 +10,6 @@
   <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- Global travelling dots — fixed at the top through every phase -->
-  <div class="dots" aria-hidden="true">
-    <div class="dots__scrim"></div>
-    <div class="dots__track" id="dotsTrack"></div>
-  </div>
-
   <main id="scene">
 
     <!-- ============ PHASE 1 · HERO ============ -->
@@ -57,54 +51,84 @@
         <!-- lower half: cross-fading panels -->
         <div class="phase2__deck">
           <!-- Experience -->
-          <article class="panel" id="panelExp" data-panel="exp">
-            <p class="eyebrow"><span class="eyebrow__tick"></span>01 &middot; Experience</p>
-            <div class="rule">
-              <span class="rule__line"></span>
-              <h2 class="masthead masthead--sm">Janartham Foundation</h2>
-              <span class="rule__line"></span>
+          <article class="panel panel--exp" id="panelExp" data-panel="exp">
+            <div class="exp">
+              <header class="exp__head">
+                <h2 class="masthead exp__title">Experience</h2>
+                <span class="exp__rule" aria-hidden="true"></span>
+              </header>
+              <p class="exp__eyebrow">Janartham Foundation &middot; Software Engineering Intern &middot; 2026</p>
+              <h3 class="exp__lede">Built the public platform for a not-for-profit</h3>
+              <div class="exp__copy">
+                <p>
+                  I engineered the public platform for Janartham Foundation, a Section&nbsp;8
+                  not-for-profit working on sustainable livelihoods, climate resilience, child
+                  rights and public health. The build was a decoupled full stack: a React&nbsp;19
+                  and Vite single page app paired with a Strapi&nbsp;v5 headless CMS over REST,
+                  backed by PostgreSQL in production with SQLite for local parity.
+                </p>
+                <p>
+                  I shipped the CSR partnership, thematic programme and impact metrics pages
+                  with Framer Motion sequences, plus a CMS driven blog that lets non-technical
+                  staff publish without ever touching code.
+                </p>
+              </div>
+              <ul class="tags" aria-label="Technologies used">
+                <li>React 19</li><li>Vite</li><li>Strapi v5</li><li>PostgreSQL</li><li>Framer Motion</li><li>REST API</li>
+              </ul>
+              <div class="exp__links">
+                <a class="exp__link exp__link--primary" href="https://janarthamfoundation.org" target="_blank" rel="noopener">
+                  Visit janarthamfoundation.org <span aria-hidden="true">↗</span>
+                </a>
+                <a class="exp__link" href="docs/certificate-of-experience.pdf" target="_blank" rel="noopener">
+                  Certificate of Experience
+                </a>
+              </div>
             </div>
-            <p class="panel__role">Software Engineering Intern &middot; May – June 2026</p>
-            <p class="panel__body">
-              Built the public platform for Janartham Foundation, a Section&nbsp;8 non-profit
-              working across education, livelihood and digital inclusion. I paired a React&nbsp;19
-              front end with a headless Strapi CMS, so non-technical staff publish programmes,
-              impact metrics and stories without ever touching code.
-            </p>
-            <ul class="tags" aria-label="Technologies used">
-              <li>React 19</li><li>Vite</li><li>Framer Motion</li><li>Strapi</li><li>PostgreSQL</li>
-            </ul>
           </article>
 
           <!-- Projects -->
-          <article class="panel" id="panelProj" data-panel="proj">
-            <p class="eyebrow"><span class="eyebrow__tick"></span>02 &middot; Selected Work</p>
-            <div class="rule">
-              <span class="rule__line"></span>
-              <h2 class="masthead masthead--sm">Projects</h2>
-              <span class="rule__line"></span>
-            </div>
-            <div class="projects">
-              <a class="project" href="https://github.com/sachiniiits/AI_Game_Engine" target="_blank" rel="noopener">
-                <h3 class="project__name">Autonomous Multi-Agent Game Engine</h3>
-                <p class="project__desc">
-                  A five-stage agentic pipeline (Research → Script → Logic → Coding → Validator)
-                  that turns a single prompt into a playable, zero-dependency browser game.
-                </p>
-                <span class="project__meta">Python · Gemini 2.5 · Phaser.js <span class="project__arrow">↗</span></span>
+          <article class="panel panel--exp" id="panelProj" data-panel="proj">
+            <div class="exp">
+              <header class="exp__head">
+                <h2 class="masthead exp__title">Projects</h2>
+                <span class="exp__rule" aria-hidden="true"></span>
+              </header>
+              <p class="exp__eyebrow">Selected Work &middot; AI Systems &amp; Full-Stack</p>
+              <ol class="proj__list">
+                <li class="proj__row">
+                  <a class="proj__link" href="https://github.com/sachiniiits/AI_Game_Engine" target="_blank" rel="noopener">
+                    <span class="proj__no">01</span>
+                    <span class="proj__body">
+                      <span class="proj__name">Autonomous Multi-Agent Game Engine<span class="proj__arrow" aria-hidden="true">↗</span></span>
+                      <span class="proj__desc">
+                        Five specialised Gemini agents &mdash; Research, Script, Logic, Coding, Validator &mdash;
+                        turn a single prompt into a playable, zero-dependency Phaser.js game, with a
+                        self-correcting validation loop that guarantees a runnable build on every run.
+                      </span>
+                      <span class="proj__tech">Python &middot; Google Gemini &middot; Phaser.js</span>
+                    </span>
+                  </a>
+                </li>
+                <li class="proj__row">
+                  <a class="proj__link" href="https://github.com/sachiniiits/btp_cs2" target="_blank" rel="noopener">
+                    <span class="proj__no">02</span>
+                    <span class="proj__body">
+                      <span class="proj__name">CS2 Role &amp; Round Analytics<span class="proj__arrow" aria-hidden="true">↗</span></span>
+                      <span class="proj__desc">
+                        Unsupervised discovery of player roles across 16,500+ professional Counter-Strike
+                        rounds using per-side Self-Organising Maps, then a leakage-free regression testing
+                        whether staying in role actually wins the round.
+                      </span>
+                      <span class="proj__tech">Python &middot; demoparser2 &middot; scikit-learn &middot; SOM</span>
+                    </span>
+                  </a>
+                </li>
+              </ol>
+              <a class="exp__link exp__link--primary proj__more" href="https://github.com/sachiniiits" target="_blank" rel="noopener">
+                More projects on GitHub <span aria-hidden="true">→</span>
               </a>
-              <a class="project" href="https://github.com/sachiniiits/btp_cs2" target="_blank" rel="noopener">
-                <h3 class="project__name">CS2 Match Analytics Pipeline</h3>
-                <p class="project__desc">
-                  Unsupervised player-role classification across ~36,000 pro Counter-Strike
-                  rounds, using a KMeans + GMM + HDBSCAN ensemble with no labelled data.
-                </p>
-                <span class="project__meta">Python · scikit-learn · demoparser2 <span class="project__arrow">↗</span></span>
-              </a>
             </div>
-            <a class="morelink" href="https://github.com/sachiniiits" target="_blank" rel="noopener">
-              More on GitHub <span aria-hidden="true">→</span>
-            </a>
           </article>
         </div>
       </div>
@@ -119,36 +143,63 @@
         <div class="phase3__veil" id="p3Veil"></div>
 
         <div class="phase3__content" id="p3Content">
-          <p class="eyebrow eyebrow--center"><span class="eyebrow__tick"></span>03 &middot; Capabilities</p>
-          <div class="rule rule--center">
-            <span class="rule__line"></span>
-            <h2 class="masthead">Technical Skills</h2>
-            <span class="rule__line"></span>
-          </div>
-          <div class="skills">
-            <div class="skillcat">
-              <h3 class="skillcat__name">Languages</h3>
-              <p class="skillcat__list">Python · TypeScript · JavaScript · Go · Rust · SQL · Dart</p>
+          <div class="glass" id="p3Glass">
+            <div class="rule rule--center">
+              <span class="rule__line"></span>
+              <h2 class="masthead">Skills</h2>
+              <span class="rule__line"></span>
             </div>
-            <div class="skillcat">
-              <h3 class="skillcat__name">AI / ML</h3>
-              <p class="skillcat__list">PyTorch · scikit-learn · LLM Fine-tuning (LoRA) · RAG · LangGraph · MCP · Diffusion Models · Transformers</p>
-            </div>
-            <div class="skillcat">
-              <h3 class="skillcat__name">Frontend</h3>
-              <p class="skillcat__list">React · Next.js · React Native · Flutter · Tailwind · Framer Motion</p>
-            </div>
-            <div class="skillcat">
-              <h3 class="skillcat__name">Backend</h3>
-              <p class="skillcat__list">Node.js · Express · Fastify · FastAPI · GraphQL · WebSockets · Kafka</p>
-            </div>
-            <div class="skillcat">
-              <h3 class="skillcat__name">Data</h3>
-              <p class="skillcat__list">PostgreSQL · Redis · MongoDB · ClickHouse · pandas · NumPy · Parquet</p>
-            </div>
-            <div class="skillcat">
-              <h3 class="skillcat__name">Cloud &amp; DevOps</h3>
-              <p class="skillcat__list">Docker · Kubernetes · AWS · GitHub Actions · NGINX · CI/CD</p>
+            <div class="skills">
+              <div class="skills__col">
+                <section class="skillcat">
+                  <h3 class="skillcat__name">Languages</h3>
+                  <ul class="skillcat__pills">
+                    <li>Python</li><li>TypeScript</li><li>JavaScript</li><li>Go</li><li>Rust</li><li>Dart</li><li>SQL</li>
+                  </ul>
+                </section>
+                <section class="skillcat">
+                  <h3 class="skillcat__name">Data &amp; Databases</h3>
+                  <ul class="skillcat__pills">
+                    <li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>ClickHouse</li><li>pgvector</li><li>Prisma</li><li>Parquet</li>
+                  </ul>
+                </section>
+              </div>
+              <div class="skills__col">
+                <section class="skillcat">
+                  <h3 class="skillcat__name">AI / ML</h3>
+                  <ul class="skillcat__pills">
+                    <li>PyTorch</li><li>scikit-learn</li><li>NumPy</li><li>pandas</li><li>SciPy</li><li>Transformers</li><li>LoRA / QLoRA</li><li>Diffusion (DDPM)</li><li>GANs &middot; VAEs</li><li>RL (DQN &middot; PPO &middot; RLHF)</li><li>RAG</li><li>LangGraph</li><li>MCP</li><li>LLM APIs</li>
+                  </ul>
+                </section>
+                <section class="skillcat">
+                  <h3 class="skillcat__name">DevOps &amp; Cloud</h3>
+                  <ul class="skillcat__pills">
+                    <li>Docker</li><li>Kubernetes</li><li>AWS</li><li>GitHub Actions</li><li>NGINX</li><li>CI/CD</li><li>Linux</li>
+                  </ul>
+                </section>
+              </div>
+              <div class="skills__col">
+                <section class="skillcat">
+                  <h3 class="skillcat__name">Frontend</h3>
+                  <ul class="skillcat__pills">
+                    <li>React 19</li><li>Next.js</li><li>React Native</li><li>Flutter</li><li>Tailwind CSS</li><li>Framer Motion</li><li>Redux Toolkit</li><li>React Query</li><li>WebAssembly</li>
+                  </ul>
+                </section>
+              </div>
+              <div class="skills__col">
+                <section class="skillcat">
+                  <h3 class="skillcat__name">Backend</h3>
+                  <ul class="skillcat__pills">
+                    <li>Node.js</li><li>Express</li><li>Fastify</li><li>FastAPI</li><li>GraphQL</li><li>WebSockets</li><li>REST</li><li>BullMQ</li><li>Kafka</li>
+                  </ul>
+                </section>
+              </div>
+              <section class="skillcat skills__wide">
+                <h3 class="skillcat__name">Systems &amp; Architecture</h3>
+                <ul class="skillcat__pills">
+                  <li>System Design</li><li>Microservices</li><li>Event-Driven Design</li><li>wgpu</li><li>Tauri</li><li>Capacitor</li>
+                </ul>
+              </section>
             </div>
           </div>
         </div>

@@ -1,0 +1,474 @@
+/* ============================================================
+   FONTS
+   ============================================================ */
+@font-face {
+  font-family: 'Chomsky';
+  src: url('../assets/fonts/Chomsky.otf') format('opentype');
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rosehot';
+  src: url('../assets/fonts/Rosehot.ttf') format('truetype');
+  font-display: swap;
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #06070b;
+  --ink: #f4f2ec;
+  --ink-soft: rgba(244, 242, 236, 0.72);
+  --ink-faint: rgba(244, 242, 236, 0.42);
+  --line: rgba(244, 242, 236, 0.28);
+  --sans: 'Inter', 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html { scroll-behavior: auto; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img, video, canvas { display: block; max-width: 100%; }
+
+.phase { position: relative; width: 100%; }
+
+.bgvideo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* ============================================================
+   GLOBAL DOTS PATTERN
+   Bottom in phase 1, rises to top for phases 2-4.
+   Horizontal drift is driven by scroll in JS.
+   ============================================================ */
+.dots {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  top: 50vh;               /* JS overrides continuously */
+  height: 1.4em;
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  z-index: 60;
+  pointer-events: none;
+  overflow: hidden;
+  will-change: top;
+}
+.dots__track {
+  display: flex;
+  width: max-content;
+  transform: translateX(0);
+  will-change: transform;
+}
+.dots__seg {
+  font-family: 'Chomsky', serif;
+  color: var(--ink);
+  white-space: nowrap;
+  letter-spacing: 0.9em;
+  line-height: 1.4em;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.55);
+}
+
+/* ============================================================
+   PHASE 1 — HERO
+   ============================================================ */
+.phase1 { height: 100vh; overflow: hidden; }
+.phase1__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.32) 0%, rgba(0,0,0,0) 26%),
+    linear-gradient(0deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0) 24%);
+}
+.hero {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: clamp(1.2rem, 4vw, 3rem);
+}
+.hero__sach {
+  position: absolute;
+  top: clamp(1.1rem, 4.5vh, 3rem);
+  left: clamp(1.2rem, 4vw, 3rem);
+  font-family: 'Rosehot', cursive;
+  font-size: clamp(1.4rem, 4vw, 2.6rem);
+  color: var(--ink);
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+}
+.hero__sample {
+  position: absolute;
+  top: clamp(2.6rem, 8vh, 5.4rem);
+  left: clamp(0.6rem, 3.4vw, 2.6rem);
+  font-family: 'Chomsky', serif;
+  font-weight: 400;
+  font-size: clamp(4rem, 15vw, 12.5rem);
+  line-height: 0.95;
+  color: var(--ink);
+  text-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+.hero__net {
+  position: absolute;
+  top: clamp(4.4rem, 12.5vh, 8.6rem);
+  right: clamp(1.2rem, 4vw, 3rem);
+  font-family: 'Chomsky', serif;
+  font-size: clamp(2.2rem, 8.5vw, 7rem);
+  line-height: 1;
+  color: var(--ink);
+  text-shadow: 0 4px 24px rgba(0,0,0,0.35);
+}
+.scrollcue {
+  position: absolute;
+  z-index: 2;
+  bottom: clamp(3.2rem, 9vh, 5.6rem);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--ink-soft);
+  font-size: 0.7rem;
+  letter-spacing: 0.34em;
+  text-transform: uppercase;
+  transition: opacity 0.5s ease;
+}
+.scrollcue__chev {
+  width: 9px; height: 9px;
+  border-right: 1.5px solid var(--ink-soft);
+  border-bottom: 1.5px solid var(--ink-soft);
+  transform: rotate(45deg);
+  animation: cuebob 1.8s ease-in-out infinite;
+}
+@keyframes cuebob {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); opacity: 0.5; }
+  50%      { transform: rotate(45deg) translate(3px, 3px); opacity: 1; }
+}
+
+/* ============================================================
+   RULE HEADING (subtle line around headings, phase 2 onward)
+   Text sits right-of-centre, echoing subtle_line.png.
+   ============================================================ */
+.rule-heading {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 2vw, 1.6rem);
+  width: 100%;
+  margin-bottom: clamp(1rem, 2.4vh, 1.8rem);
+}
+.rule-heading::before,
+.rule-heading::after {
+  content: '';
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--line), transparent);
+}
+.rule-heading::before { flex: 2.4; }
+.rule-heading::after  { flex: 1; }
+.rule-heading__text {
+  font-family: 'Chomsky', serif;
+  font-size: clamp(1.8rem, 4.2vw, 3.4rem);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--ink);
+}
+.rule-heading--light .rule-heading__text { color: var(--ink); }
+
+/* ============================================================
+   SHARED — chips, links
+   ============================================================ */
+.chip {
+  display: inline-block;
+  font-size: clamp(0.68rem, 1.3vw, 0.82rem);
+  letter-spacing: 0.01em;
+  padding: 0.34em 0.72em;
+  border: 1px solid rgba(244, 242, 236, 0.24);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  background: rgba(244, 242, 236, 0.04);
+  white-space: nowrap;
+}
+.panel__meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
+.panel__links { display: flex; flex-wrap: wrap; gap: 0.8rem 1.4rem; margin-top: 1.3rem; }
+.link {
+  position: relative;
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.86rem;
+  letter-spacing: 0.02em;
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--ink-faint);
+  transition: border-color 0.25s ease, color 0.25s ease;
+}
+.link:hover { border-color: var(--ink); }
+.link--ghost { color: var(--ink-soft); border-bottom-color: transparent; }
+.link--ghost:hover { color: var(--ink); border-bottom-color: var(--ink-faint); }
+
+/* ============================================================
+   PHASE 2 — EXPERIENCE + PROJECTS
+   ============================================================ */
+.phase2 {
+  height: 340vh;
+  background:
+    radial-gradient(120% 60% at 50% 0%, rgba(30, 40, 66, 0.35), transparent 60%),
+    linear-gradient(180deg, #07080c 0%, #090a11 100%);
+}
+.phase2__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.phase2__video {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 45vh;
+  z-index: 1;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+.p2video__el {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.phase2__videoglow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(0,0,0,0.20) 0%,
+    rgba(0,0,0,0) 20%,
+    rgba(9,10,17,0) 55%,
+    rgba(9,10,17,0.7) 84%,
+    #090a11 100%);
+}
+.phase2__stage {
+  position: absolute;
+  left: 0;
+  top: 45vh;
+  width: 100%;
+  height: 55vh;
+  z-index: 2;
+}
+.panel {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.4rem, 5vw, 4.5rem);
+  max-width: 1100px;
+  margin: 0 auto;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.panel__eyebrow {
+  font-size: clamp(0.72rem, 1.5vw, 0.9rem);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.7rem;
+}
+.panel__title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(1.15rem, 2.8vw, 1.9rem);
+  line-height: 1.15;
+  margin-bottom: 0.9rem;
+  color: var(--ink);
+}
+.panel__body {
+  font-size: clamp(0.86rem, 1.55vw, 1.02rem);
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 68ch;
+  margin-bottom: 0.6rem;
+}
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.2rem, 3vw, 2.6rem);
+}
+.project__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+.project__title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  line-height: 1.15;
+  color: var(--ink);
+}
+.project__gh {
+  font-size: 0.76rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  text-decoration: none;
+  white-space: nowrap;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+.project__gh:hover { color: var(--ink); border-bottom-color: var(--ink-faint); }
+.project__body {
+  font-size: clamp(0.8rem, 1.4vw, 0.95rem);
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-bottom: 0.7rem;
+}
+.projects__more {
+  margin-top: clamp(1rem, 2.4vh, 1.8rem);
+  font-size: 0.88rem;
+  color: var(--ink-faint);
+}
+
+/* ============================================================
+   PHASE 3 — SCROLL-SCRUBBED VIDEO + SKILLS
+   ============================================================ */
+.phase3 {
+  height: 620vh;
+  background: #06070b;
+}
+.phase3__sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+.phase3__canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background: #06070b;
+}
+.phase3__blur {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  -webkit-backdrop-filter: blur(20px) saturate(1.05);
+  backdrop-filter: blur(20px) saturate(1.05);
+  background:
+    radial-gradient(120% 80% at 50% 40%, rgba(6,8,14,0.35), rgba(6,8,14,0.78)),
+    rgba(6, 8, 14, 0.35);
+  will-change: opacity;
+}
+.phase3__content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(1.4rem, 6vw, 6rem);
+  max-width: 1200px;
+  margin: 0 auto;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: clamp(1rem, 2.6vw, 2rem) clamp(1.4rem, 3vw, 2.6rem);
+}
+.skillgroup--wide { grid-column: 1 / -1; }
+.skillgroup__title {
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 0.75rem;
+}
+.skillgroup__items { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+
+/* ============================================================
+   PHASE 4 — FOOTER
+   ============================================================ */
+.phase4 { height: 100vh; overflow: hidden; }
+.phase4__scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.28) 0%, rgba(0,0,0,0) 22%),
+    linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 45%);
+}
+.footer {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: clamp(1.6rem, 5vw, 4.5rem);
+}
+.footer__name {
+  display: flex;
+  flex-direction: column;
+  line-height: 0.92;
+}
+.footer__line {
+  font-family: 'Chomsky', serif;
+  font-size: clamp(3.4rem, 13vw, 10rem);
+  color: var(--ink);
+  text-shadow: 0 6px 30px rgba(0,0,0,0.4);
+}
+.footer__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.6rem;
+  margin-top: clamp(1.1rem, 3vh, 2rem);
+}
+.footer__link {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid transparent;
+  transition: color 0.25s ease, border-color 0.25s ease;
+}
+.footer__link:hover { color: var(--ink); border-bottom-color: var(--ink-faint); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 760px) {
+  .phase2 { height: 400vh; }
+  .phase2__video { height: 33vh; }
+  .phase2__stage { top: 33vh; height: 67vh; }
+  .projects { grid-template-columns: 1fr; gap: 0.7rem; }
+  .project__body { font-size: 0.76rem; line-height: 1.42; margin-bottom: 0.5rem; }
+  .project__title { font-size: 1.05rem; }
+  .panel { padding: 1.15rem; }
+  .panel__meta { margin-top: 0.7rem; }
+  .projects__more { margin-top: 0.9rem; }
+  .phase3 { height: 560vh; }
+  .rule-heading::before { flex: 1.6; }
+  .rule-heading { margin-bottom: 0.8rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scrollcue__chev { animation: none; }
+}

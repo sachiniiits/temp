@@ -1,237 +1,31 @@
 <!doctype html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>Sachin Kumar</title>
-  <meta name="description" content="Sachin Kumar — Computer Science student at IIIT Sricity building across AI/ML and full-stack engineering." />
-  <meta name="theme-color" content="#0a0908" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0908'/%3E%3Cpolygon points='16,6.5 25.5,16 16,25.5 6.5,16' fill='%23f3ede2'/%3E%3C/svg%3E" />
-  <link rel="stylesheet" href="css/styles.css" />
-</head>
-<body>
-  <main id="scene">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sachin Kumar — Software & AI Engineer</title>
+    <meta
+      name="description"
+      content="Sachin Kumar — Computer Science undergraduate at IIIT Sricity. Full-stack engineering and applied machine learning: multi-agent AI pipelines, behavioural analytics, and production web platforms."
+    />
+    <meta name="theme-color" content="#F9F8F6" />
 
-    <!-- ============ PHASE 1 · HERO ============ -->
-    <section class="hero" id="phase1" aria-label="Introduction">
-      <div class="media media--fixedcover">
-        <video class="media__video" id="heroVideo" poster="media/poster1.jpg"
-               muted loop playsinline autoplay preload="auto"
-               disablepictureinpicture disableremoteplayback tabindex="-1" aria-hidden="true">
-          <source src="media/video1.mp4" type="video/mp4" />
-        </video>
-        <div class="media__scrim media__scrim--hero"></div>
-      </div>
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Sachin Kumar — Software & AI Engineer" />
+    <meta
+      property="og:description"
+      content="Full-stack engineering and applied machine learning. Selected work, experience, and skills."
+    />
 
-      <div class="hero__inner">
-        <span class="hero__sach">sach</span>
-        <h1 class="hero__title">sample</h1>
-        <span class="hero__net">.net</span>
-      </div>
-
-      <a class="scrollcue" href="#phase2" aria-label="Scroll down">
-        <span class="scrollcue__label">Scroll</span>
-        <span class="scrollcue__chev" aria-hidden="true"></span>
-      </a>
-    </section>
-
-    <!-- ============ PHASE 2 · EXPERIENCE + PROJECTS ============ -->
-    <section class="phase2" id="phase2" aria-label="Experience and projects">
-      <div class="phase2__pin">
-        <!-- upper half: video 2 -->
-        <div class="phase2__stage" id="p2Video">
-          <video class="media__video" id="phase2Video" poster="media/poster2.jpg"
-                 muted loop playsinline preload="auto"
-                 disablepictureinpicture disableremoteplayback tabindex="-1" aria-hidden="true">
-            <source src="media/video2.mp4" type="video/mp4" />
-          </video>
-          <div class="media__scrim media__scrim--p2"></div>
-        </div>
-
-        <!-- lower half: cross-fading panels -->
-        <div class="phase2__deck">
-          <!-- Experience -->
-          <article class="panel panel--exp" id="panelExp" data-panel="exp">
-            <div class="exp">
-              <header class="exp__head">
-                <h2 class="masthead exp__title">Experience</h2>
-                <span class="exp__rule" aria-hidden="true"></span>
-              </header>
-              <p class="exp__eyebrow">Janartham Foundation &middot; Software Engineering Intern &middot; 2026</p>
-              <h3 class="exp__lede">Built the public platform for a not-for-profit</h3>
-              <div class="exp__copy">
-                <p>
-                  I engineered the public platform for Janartham Foundation, a Section&nbsp;8
-                  not-for-profit working on sustainable livelihoods, climate resilience, child
-                  rights and public health. The build was a decoupled full stack: a React&nbsp;19
-                  and Vite single page app paired with a Strapi&nbsp;v5 headless CMS over REST,
-                  backed by PostgreSQL in production with SQLite for local parity.
-                </p>
-                <p>
-                  I shipped the CSR partnership, thematic programme and impact metrics pages
-                  with Framer Motion sequences, plus a CMS driven blog that lets non-technical
-                  staff publish without ever touching code.
-                </p>
-              </div>
-              <ul class="tags" aria-label="Technologies used">
-                <li>React 19</li><li>Vite</li><li>Strapi v5</li><li>PostgreSQL</li><li>Framer Motion</li><li>REST API</li>
-              </ul>
-              <div class="exp__links">
-                <a class="exp__link exp__link--primary" href="https://janarthamfoundation.org" target="_blank" rel="noopener">
-                  Visit janarthamfoundation.org <span aria-hidden="true">↗</span>
-                </a>
-                <a class="exp__link" href="docs/certificate-of-experience.pdf" target="_blank" rel="noopener">
-                  Certificate of Experience
-                </a>
-              </div>
-            </div>
-          </article>
-
-          <!-- Projects -->
-          <article class="panel panel--exp" id="panelProj" data-panel="proj">
-            <div class="exp">
-              <header class="exp__head">
-                <h2 class="masthead exp__title">Projects</h2>
-                <span class="exp__rule" aria-hidden="true"></span>
-              </header>
-              <p class="exp__eyebrow">Selected Work &middot; AI Systems &amp; Full-Stack</p>
-              <ol class="proj__list">
-                <li class="proj__row">
-                  <a class="proj__link" href="https://github.com/sachiniiits/AI_Game_Engine" target="_blank" rel="noopener">
-                    <span class="proj__no">01</span>
-                    <span class="proj__body">
-                      <span class="proj__name">Autonomous Multi-Agent Game Engine<span class="proj__arrow" aria-hidden="true">↗</span></span>
-                      <span class="proj__desc">
-                        Five specialised Gemini agents &mdash; Research, Script, Logic, Coding, Validator &mdash;
-                        turn a single prompt into a playable, zero-dependency Phaser.js game, with a
-                        self-correcting validation loop that guarantees a runnable build on every run.
-                      </span>
-                      <span class="proj__tech">Python &middot; Google Gemini &middot; Phaser.js</span>
-                    </span>
-                  </a>
-                </li>
-                <li class="proj__row">
-                  <a class="proj__link" href="https://github.com/sachiniiits/btp_cs2" target="_blank" rel="noopener">
-                    <span class="proj__no">02</span>
-                    <span class="proj__body">
-                      <span class="proj__name">CS2 Role &amp; Round Analytics<span class="proj__arrow" aria-hidden="true">↗</span></span>
-                      <span class="proj__desc">
-                        Unsupervised discovery of player roles across 16,500+ professional Counter-Strike
-                        rounds using per-side Self-Organising Maps, then a leakage-free regression testing
-                        whether staying in role actually wins the round.
-                      </span>
-                      <span class="proj__tech">Python &middot; demoparser2 &middot; scikit-learn &middot; SOM</span>
-                    </span>
-                  </a>
-                </li>
-              </ol>
-              <a class="exp__link exp__link--primary proj__more" href="https://github.com/sachiniiits" target="_blank" rel="noopener">
-                More projects on GitHub <span aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PHASE 3 · TECHNICAL SKILLS (scroll-scrubbed video) ============ -->
-    <section class="phase3" id="phase3" aria-label="Technical skills">
-      <div class="phase3__pin">
-        <div class="media media--cover phase3__media">
-          <canvas id="scrubCanvas" class="scrub-canvas" aria-hidden="true"></canvas>
-        </div>
-        <div class="phase3__veil" id="p3Veil"></div>
-
-        <div class="phase3__content" id="p3Content">
-          <div class="glass" id="p3Glass">
-            <div class="rule rule--center">
-              <span class="rule__line"></span>
-              <h2 class="masthead">Skills</h2>
-              <span class="rule__line"></span>
-            </div>
-            <div class="skills">
-              <div class="skills__col">
-                <section class="skillcat">
-                  <h3 class="skillcat__name">Languages</h3>
-                  <ul class="skillcat__pills">
-                    <li>Python</li><li>TypeScript</li><li>JavaScript</li><li>Go</li><li>Rust</li><li>Dart</li><li>SQL</li>
-                  </ul>
-                </section>
-                <section class="skillcat">
-                  <h3 class="skillcat__name">Data &amp; Databases</h3>
-                  <ul class="skillcat__pills">
-                    <li>PostgreSQL</li><li>MongoDB</li><li>Redis</li><li>ClickHouse</li><li>pgvector</li><li>Prisma</li><li>Parquet</li>
-                  </ul>
-                </section>
-              </div>
-              <div class="skills__col">
-                <section class="skillcat">
-                  <h3 class="skillcat__name">AI / ML</h3>
-                  <ul class="skillcat__pills">
-                    <li>PyTorch</li><li>scikit-learn</li><li>NumPy</li><li>pandas</li><li>SciPy</li><li>Transformers</li><li>LoRA / QLoRA</li><li>Diffusion (DDPM)</li><li>GANs &middot; VAEs</li><li>RL (DQN &middot; PPO &middot; RLHF)</li><li>RAG</li><li>LangGraph</li><li>MCP</li><li>LLM APIs</li>
-                  </ul>
-                </section>
-                <section class="skillcat">
-                  <h3 class="skillcat__name">DevOps &amp; Cloud</h3>
-                  <ul class="skillcat__pills">
-                    <li>Docker</li><li>Kubernetes</li><li>AWS</li><li>GitHub Actions</li><li>NGINX</li><li>CI/CD</li><li>Linux</li>
-                  </ul>
-                </section>
-              </div>
-              <div class="skills__col">
-                <section class="skillcat">
-                  <h3 class="skillcat__name">Frontend</h3>
-                  <ul class="skillcat__pills">
-                    <li>React 19</li><li>Next.js</li><li>React Native</li><li>Flutter</li><li>Tailwind CSS</li><li>Framer Motion</li><li>Redux Toolkit</li><li>React Query</li><li>WebAssembly</li>
-                  </ul>
-                </section>
-              </div>
-              <div class="skills__col">
-                <section class="skillcat">
-                  <h3 class="skillcat__name">Backend</h3>
-                  <ul class="skillcat__pills">
-                    <li>Node.js</li><li>Express</li><li>Fastify</li><li>FastAPI</li><li>GraphQL</li><li>WebSockets</li><li>REST</li><li>BullMQ</li><li>Kafka</li>
-                  </ul>
-                </section>
-              </div>
-              <section class="skillcat skills__wide">
-                <h3 class="skillcat__name">Systems &amp; Architecture</h3>
-                <ul class="skillcat__pills">
-                  <li>System Design</li><li>Microservices</li><li>Event-Driven Design</li><li>wgpu</li><li>Tauri</li><li>Capacitor</li>
-                </ul>
-              </section>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ PHASE 4 · FOOTER ============ -->
-    <section class="footer" id="phase4" aria-label="Contact">
-      <div class="media media--cover">
-        <video class="media__video" id="footerVideo" poster="media/poster4.jpg"
-               muted loop playsinline preload="auto"
-               disablepictureinpicture disableremoteplayback tabindex="-1" aria-hidden="true">
-          <source src="media/video4.mp4" type="video/mp4" />
-        </video>
-        <div class="media__scrim media__scrim--footer"></div>
-      </div>
-
-      <div class="footer__inner">
-        <h2 class="footer__name">
-          <span>sachin</span>
-          <span>Kumar.</span>
-        </h2>
-        <nav class="footer__links" aria-label="Contact links">
-          <a href="mailto:sachin.k24@iiits.in">sachin.k24@iiits.in</a>
-          <a href="https://github.com/sachiniiits" target="_blank" rel="noopener">github</a>
-          <a href="https://linkedin.com/in/sach975" target="_blank" rel="noopener">linkedin</a>
-        </nav>
-      </div>
-    </section>
-
-  </main>
-
-  <script src="js/main.js"></script>
-</body>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
 </html>

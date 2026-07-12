@@ -1,0 +1,108 @@
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------
+   Design tokens — Luxury / Editorial
+   Every colour, font, easing and duration used in the site resolves
+   back to this block. Nothing below hard-codes a hex value.
+------------------------------------------------------------------ */
+@theme {
+  --color-alabaster: #f9f8f6; /* background — warm, never pure white */
+  --color-charcoal: #1a1a1a; /* foreground — soft, never pure black */
+  --color-taupe: #ebe5de; /* muted surface */
+  --color-warmgrey: #6c6863; /* secondary text */
+  --color-gold: #d4af37; /* accent only — hover, focus, emphasis */
+
+  --font-display: 'Playfair Display', 'Iowan Old Style', Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  --radius-none: 0px;
+
+  /* Cinematic easing — never ease-in-out, it reads mechanical */
+  --ease-lux: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* offset for the fixed nav when jumping to an anchor */
+    scroll-padding-top: 6rem;
+  }
+
+  body {
+    background-color: var(--color-alabaster);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Strictly rectangular. No rounded corners anywhere. */
+  * {
+    border-radius: 0;
+  }
+
+  ::selection {
+    background-color: var(--color-gold);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 1px solid var(--color-gold);
+    outline-offset: 3px;
+  }
+}
+
+@layer utilities {
+  /* Vertical side labels — "Portfolio / Vol. 01" */
+  .vertical-rl {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  /* Classic editorial drop cap for introductory paragraphs */
+  .dropcap::first-letter {
+    font-family: var(--font-display);
+    font-weight: 400;
+    float: left;
+    font-size: 4.5rem;
+    line-height: 0.8;
+    padding-top: 0.35rem;
+    margin-right: 0.75rem;
+  }
+}
+
+/* Accordion / reveal content fade used by the experience detail rows */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 700ms var(--ease-lux) both;
+}
+
+/* Respect vestibular preferences: keep colour, drop the movement. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .no-motion-transform {
+    transform: none !important;
+  }
+}
